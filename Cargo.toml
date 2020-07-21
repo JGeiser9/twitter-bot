@@ -1,0 +1,9 @@
+[package]
+name = "twitter-bot"
+version = "0.1.0"
+authors = ["JGeiser9 <32041734+JGeiser9@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
