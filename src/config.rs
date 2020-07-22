@@ -1,13 +1,14 @@
+use serde_derive::{Serialize, Deserialize};
 use std::path::Path;
 use std::fs::{File};
 use serde_json;
 
 #[derive(Serialize, Deserialize)]
 pub struct Config {
-    pub consumer_key : String, 
-    pub consumer_secret : String,
-    pub access_key : String,
-    pub access_secret : String,
+    pub oauth_consumer_key : String, 
+    pub oauth_consumer_secret : String,
+    pub oauth_token : String,
+    pub oauth_token_secret : String,
 }
 
 impl Config {
