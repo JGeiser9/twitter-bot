@@ -1,3 +1,5 @@
+use job_scheduler::{JobScheduler, Job};
+use std::time::Duration;
 use std::fs;
 
 mod config;
@@ -31,8 +33,25 @@ fn main() {
     );
 
     let msg = build_message();
-    println!("{}", msg);
+    // println!("{}", msg);
     // twitter.tweet(msg);
 
-    println!("Tweet Sent! Check Your Twitter");
+    let mut sched = JobScheduler::new();
+
+    // Test Job - replace with actual jobs to API endpoints for data
+    // Runs every minute - second | minute | hour | day of month | month | day of week | year
+    sched.add(Job::new("* 1 * * * *".parse().unwrap(), || {
+        println!("===== New Tweet =====");
+        println!("{}", msg);
+        println!("...waiting on new tweet");
+    }));
+
+    loop {
+        sched.tick();
+
+        // Put the current thread to sleep for a specified time
+        std::thread::sleep(Duration::from_millis(500));
+
+        // @TODO: may need to implement re-running missed / delayed jobs
+    }
 }
