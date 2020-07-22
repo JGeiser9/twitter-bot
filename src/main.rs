@@ -39,8 +39,8 @@ fn main() {
     let mut sched = JobScheduler::new();
 
     // Test Job - replace with actual jobs to API endpoints for data
-    // Runs every minute - second | minute | hour | day of month | month | day of week | year
-    sched.add(Job::new("* 1 * * * *".parse().unwrap(), || {
+    // Runs every hour - second | minute | hour | day of month | month | day of week | year
+    sched.add(Job::new("0 0 0/1 * * *".parse().unwrap(), || {
         println!("===== New Tweet =====");
         println!("{}", msg);
         println!("...waiting on new tweet");
